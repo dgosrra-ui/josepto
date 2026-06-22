@@ -52,3 +52,17 @@ void imprimir(Alumno *a) {
     printf("Número: %d\n", a->direccion.numerodecasa);
     }
 }
+void guardararchivo(Alumno *a) {
+    FILE *archivo = fopen("alumnos.txt", "w");
+    
+
+    for (int i = 0; i < 3; i++) {
+        fprintf(archivo, "Alumno %d:\n", i + 1);
+        fprintf(archivo, "Nombre: %s\n", a[i].nombre);
+        fprintf(archivo, "Edad: %d\n", a[i].edad);
+        fprintf(archivo, "Dirección: %s, %s\n", a[i].direccion.calleprincipal, a[i].direccion.callesecundaria);
+        fprintf(archivo, "Número: %d\n\n", a[i].direccion.numerodecasa);
+    }
+
+    fclose(archivo);
+}
